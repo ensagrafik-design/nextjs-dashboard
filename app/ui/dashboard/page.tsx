@@ -1,6 +1,7 @@
 import { fetchCardData } from '@/app/lib/data';
 import { fetchRevenue } from '@/app/lib/data';
 
+
 export default async function Page() {
   const revenue = await fetchRevenue();
   const {
@@ -14,7 +15,9 @@ export default async function Page() {
     <main>
       <section>
         <h1>Revenue</h1>
-        <p>{revenue}</p>
+        {revenue.map((item, i) => (
+          <p key={i}>Month: {item.month}, Revenue: {item.revenue}</p>
+        ))}
       </section>
       <section>
         <h1>Invoice Summary</h1>
